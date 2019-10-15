@@ -14,7 +14,7 @@ configurations {
 nuget{
 	nuspec{
 		id = zlib_static;
-		version: 1.2.11;
+		version: 1.2.11.1;
 		title: zlib library;
 		authors: {Jean-loup Gailly, Mark Adler};
 		owners: {Ivan Gagis};
