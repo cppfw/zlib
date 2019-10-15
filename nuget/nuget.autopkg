@@ -18,9 +18,9 @@ nuget{
 		title: zlib library;
 		authors: {Jean-loup Gailly, Mark Adler};
 		owners: {Ivan Gagis};
-		licenseUrl: "https://raw.githubusercontent.com/igagis/zlib/master/README";
+		license: "https://raw.githubusercontent.com/igagis/zlib/master/README";
 		projectUrl: "https://github.com/igagis/zlib";
-		iconUrl: "https://github.com/igagis/zlib/blob/master/logo.svg";
+		icon: "https://github.com/igagis/zlib/blob/master/logo.svg";
 		requireLicenseAcceptance:false;
 		summary: compression library;
 
