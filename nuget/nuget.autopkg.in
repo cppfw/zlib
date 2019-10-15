@@ -1,0 +1,86 @@
+configurations {
+	UserPlatformToolset {
+		// Needed because autopackage lacks VS2015+ support
+		key = "PlatformToolset";
+		choices: "v141,v142";
+	};
+
+	RuntimeLibrary {
+		key = "RuntimeLibrary"; // This is the key you can find in .vcxproj file
+		choices: "MultiThreaded,MultiThreadedDebug,MultiThreadedDLL,MultiThreadedDebugDLL"; // these choices must be valid values for .vcxproj file
+	};
+}
+
+nuget{
+	nuspec{
+		id = zlib_static;
+		version: 1.2.11;
+		title: zlib library;
+		authors: {Jean-loup Gailly, Mark Adler};
+		owners: {Ivan Gagis};
+		licenseUrl: "https://raw.githubusercontent.com/igagis/zlib/master/README";
+		projectUrl: "https://github.com/igagis/zlib";
+		iconUrl: "https://github.com/igagis/zlib/blob/master/logo.svg";
+		requireLicenseAcceptance:false;
+		summary: compression library;
+
+		description: @"compression library";
+		releaseNotes: "Initial release";
+		copyright: 1995-2017 Jean-loup Gailly and Mark Adler;
+		tags: { native};
+	}
+	dependencies {
+		packages : {
+
+		};
+	}
+	files {
+		//this is needed to put headers in the base folder
+		include: {
+			"..\*.h"
+		};
+
+		//==== v141 tools ====
+
+		[x86,v141,release] {
+			lib: ..\msvs_solution\v141_Release\zlib.lib;
+		}
+		[x86,v141,debug] {
+			lib: ..\msvs_solution\v141_Debug\zlib.lib;
+		}
+		[x64,v141,release] {
+			lib: ..\msvs_solution\x64\v141_Release\zlib.lib;
+		}
+		[x64,v141,debug] {
+			lib: ..\msvs_solution\x64\v141_Debug\zlib.lib;
+		}
+
+		//==== v142 tools ====
+
+		[x86,v142,release,MultiThreaded] {
+			lib: ..\msvs_solution\v142_Release_MT\zlib.lib;
+		}
+		[x86,v142,debug,MultiThreadedDebug] {
+			lib: ..\msvs_solution\v142_Debug_MT\zlib.lib;
+		}
+		[x64,v142,release,MultiThreaded] {
+			lib: ..\msvs_solution\x64\v142_Release_MT\zlib.lib;
+		}
+		[x64,v142,debug,MultiThreadedDebug] {
+			lib: ..\msvs_solution\x64\v142_Debug_MT\zlib.lib;
+		}
+		[x86,v142,release,MultiThreadedDLL] {
+			lib: ..\msvs_solution\v142_Release_MD\zlib.lib;
+		}
+		[x86,v142,debug,MultiThreadedDebugDLL] {
+			lib: ..\msvs_solution\v142_Debug_MD\zlib.lib;
+		}
+		[x64,v142,release,MultiThreadedDLL] {
+			lib: ..\msvs_solution\x64\v142_Release_MD\zlib.lib;
+		}
+		[x64,v142,debug,MultiThreadedDebugDLL] {
+			lib: ..\msvs_solution\x64\v142_Debug_MD\zlib.lib;
+		}
+
+	}
+}
