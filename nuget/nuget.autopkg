@@ -2,7 +2,7 @@ configurations {
 	UserPlatformToolset {
 		// Needed because autopackage lacks VS2015+ support
 		key = "PlatformToolset";
-		choices: "v141,v142";
+		choices: "v140,v141,v142";
 	};
 
 	RuntimeLibrary {
@@ -14,7 +14,7 @@ configurations {
 nuget{
 	nuspec{
 		id = zlib_static;
-		version: 1.2.11.1;
+		version: 1.2.11.2;
 		title: zlib library;
 		authors: {Jean-loup Gailly, Mark Adler};
 		owners: {Ivan Gagis};
@@ -39,6 +39,21 @@ nuget{
 		include: {
 			"..\*.h"
 		};
+
+		//==== v140 tools ====
+
+		[x86,v140,release] {
+			lib: ..\msvs_solution\v140_Release\zlib.lib;
+		}
+		[x86,v140,debug] {
+			lib: ..\msvs_solution\v140_Debug\zlib.lib;
+		}
+		[x64,v140,release] {
+			lib: ..\msvs_solution\x64\v140_Release\zlib.lib;
+		}
+		[x64,v140,debug] {
+			lib: ..\msvs_solution\x64\v140_Debug\zlib.lib;
+		}
 
 		//==== v141 tools ====
 
