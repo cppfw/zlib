@@ -1,0 +1,8 @@
+source 'https://github.com/igagis/cocoapods-repo.git'
+
+project 'zlib/zlib.xcodeproj'
+
+platform :ios, '8.0'
+
+target "zlib" do
+end
