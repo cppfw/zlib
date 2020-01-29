@@ -27,7 +27,7 @@ nuget{
 		description: @"Cmpression/decompression library. When using v142 tools, do not forget to set the 'Runtime Library' in 'Project Master Settings -> C/C++ Settings'. ";
 		releaseNotes: "Initial release";
 		copyright: 1995-2017 Jean-loup Gailly and Mark Adler;
-		tags: { native, v141, v142};
+		tags: { native, v140, v141, v142};
 	}
 	dependencies {
 		packages : {
