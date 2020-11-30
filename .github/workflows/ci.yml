@@ -76,7 +76,7 @@ jobs:
       uses: actions/checkout@main
     - name: set PACKAGE_VERSION
       uses: myci-actions/export-env-var@master
-      with: {name: PACKAGE_VERSION, value: $(myci-deb-version.sh debian/changelog)}
+      with: {name: PACKAGE_VERSION, value: $(cat version.txt)}
     - name: add cocoapods repo
       run: pod repo add --silent cppfw https://$MYCI_GIT_USERNAME@github.com/cppfw/cocoapods-repo.git
     - name: install deps
@@ -93,7 +93,7 @@ jobs:
       run: myci-create-zip-package.sh --headers-dir . --file xcode/build/lib$PACKAGE_NAME.a///lib/ios --file LICENSE $PACKAGE_NAME-$PACKAGE_VERSION.zip
     - name: deploy
       run: myci-deploy-cocoapods.sh --repo cppfw --version $PACKAGE_VERSION --bintray-owner cppfw --bintray-repo cocoapods --package-file $PACKAGE_NAME-$PACKAGE_VERSION.zip cocoapods/$PACKAGE_NAME.podspec.in
-      if: startsWith(github.ref, 'refs/tags/')
+      # if: startsWith(github.ref, 'refs/tags/')
 ##### android #####
   # android:
   #   runs-on: ubuntu-latest
@@ -111,7 +111,7 @@ jobs:
   #     run: apt install --assume-yes myci
   #   - name: set PACKAGE_VERSION
   #     uses: myci-actions/export-env-var@master
-  #     with: {name: PACKAGE_VERSION, value: $(myci-deb-version.sh debian/changelog)}
+  #     with: {name: PACKAGE_VERSION, value: $(cat version.txt)}
   #   - name: build
   #     run: |
   #       cd android
@@ -191,4 +191,4 @@ jobs:
       with:
         filename: '.\nuget\*.nupkg'
         api-key: ${{ secrets.NUGET_DOT_ORG_API_KEY }}
-      if: startsWith(github.ref, 'refs/tags/')
+      # if: startsWith(github.ref, 'refs/tags/')
